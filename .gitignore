@@ -1,0 +1,8 @@
+#dir
+.idea
+resources
+test
+out
+#files
+*.log
+*.class
