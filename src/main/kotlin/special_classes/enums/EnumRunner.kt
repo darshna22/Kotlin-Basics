@@ -7,33 +7,32 @@ package special_classes.enums
 * separated from the list of enum constants by a semicolon.
 * */
 
-//1.
-//Enum without properties and method
+//1. Enum with states
 enum class State {
-    IDLE, RUNNING, FINISHED                           // 1
+    IDLE, RUNNING, FINISHED
 }
 
 
-//2.
-//Enum with properties and method
-enum class Color(val rgb: Int) {                      // 1
-    RED(0xFF0000),                                    // 2
+//2. Enum with properties and method
+enum class Color(val rgb: Int) {
+    RED(0xFF0000),
     GREEN(0x00FF00),
     BLUE(0x0000FF),
     YELLOW(0xFFFF00);
 
-    fun containsRed() = (this.rgb and 0xFF0000 != 0)  // 3
+
+    fun containsRed() = (this.rgb and 0xFF0000 != 0)
 }
 
-//3
+//3 Enum with properties
 enum class Cards(val color: String) {
     Diamond("black"),
     Heart("red");
 }
 
 fun main() {
-    val state = State.RUNNING                         // 2
-    val message = when (state) {                      // 3
+    val state = State.RUNNING
+    val message = when (state) {
         State.IDLE -> "It's idle"
         State.RUNNING -> "It's running"
         State.FINISHED -> "It's finished"
@@ -42,11 +41,14 @@ fun main() {
 
 
     val red = Color.RED
-    println(red.rgb)                                      // 4
+    println(red.rgb)
     println(red.containsRed())
 
     val color = Cards.Diamond.color
     println(color)
+
+    for (state in Color.values())
+        println(state)
 }
 
 
